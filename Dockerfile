@@ -20,9 +20,14 @@ RUN wget https://www.dropbox.com/s/bo5z0afnc77j0sg/woocommerce-shipment-tracking
     && unzip /tmp/temp.zip \
     && rm /tmp/temp.zip
 
+RUN wget https://www.dropbox.com/s/ew1ylfqkvxsjn05/disable-woocommerce-authentication.zip?dl=0 -O /tmp/temp.zip \
+    && cd /usr/src/wordpress/wp-content/plugins \
+    && unzip /tmp/temp.zip \
+    && rm /tmp/temp.zip
+
 #RUN wp core config --dbhost=host.db --dbname=wp_ --dbuser=root --dbpass=swialyitt6 --path=/usr/src/wordpress --allow-root
 #RUN wp core install --url=yourwebsite.com --title="Your Blog Title" --admin_name=admin --admin_password=admin --#admin_email=test@test.com --allow-root
 
 #RUN wp plugin activate --all --allow-root
 
-RUN echo "add_filter( 'woocommerce_api_check_authentication', function() { return new WP_User( 1 ); } );" >> /usr/src/wordpress/wp-content/themes/twentyseventeen/functions.php 
+#RUN echo "add_filter( 'woocommerce_api_check_authentication', function() { return new WP_User( 1 ); } );" >> /usr/src/wordpress/wp-content/themes/twentyseventeen/functions.php
